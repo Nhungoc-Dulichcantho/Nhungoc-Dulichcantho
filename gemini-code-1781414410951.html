@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Du Lịch Cần Thơ - Như Ngọc: Tour Chợ Nổi, Cồn Sơn & Thuê Tàu</title>
+    <meta name="description" content="Khám phá du lịch Cần Thơ cùng Như Ngọc. Chuyên Tour ghép Chợ Nổi Cái Răng hàng ngày chỉ 100k, tour cộng đồng Cồn Sơn và dịch vụ thuê tàu riêng giá tốt nhất.">
+    <meta name="keywords" content="du lich can tho, cho noi cai rang, con son can tho, thue tau can tho, nhu ngoc du lich can tho">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: #f5f5f7;
+            color: #222;
+            line-height: 1.6;
+            padding-bottom: 90px; 
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 576px; 
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cover-photo-container {
+            width: 100%;
+            aspect-ratio: 1942 / 809;
+            position: relative;
+            overflow: hidden;
+            background-color: #eaeaea;
+        }
+        .cover-photo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+        .avatar-container {
+            position: relative;
+            margin-top: -60px; /* Đã điều chỉnh để cân đối với size ảnh mới */
+            display: inline-block;
+            z-index: 99;
+        }
+        .avatar {
+            width: 120px; /* Đã tăng kích thước từ 90px lên 120px */
+            height: 120px; /* Đã tăng kích thước từ 90px lên 120px */
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .brand-title {
+            font-size: 24px; /* Đã tăng kích thước từ 20px lên 24px */
+            font-weight: 700;
+            color: #007A33; 
+            text-align: center;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- TOUR SECTIONS --- */
+        .tour-list {
+            padding: 0 16px;
+        }
+        .tour-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-bottom: 18px;
+            border: 1px solid #edf0ee;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+        }
+        
+        .tour-image-wrapper {
+            width: 100%;
+            aspect-ratio: 1632 / 963;
+            overflow: hidden;
+            background-color: #eaeaea;
+        }
+        .tour-image-fixed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Style đặc biệt cho ảnh Cồn Sơn để không bị cắt xén */
+        .tour-image-conson {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f5f5f7;
+            display: block;
+        }
+
+        /* Style đặc biệt cho ảnh Tây Đô về đêm để không bị cắt xén */
+        .tour-image-tourdem {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f5f5f7;
+            display: block;
+        }
+
+        /* Style đặc biệt cho ảnh Tour kết hợp để không bị cắt xén */
+        .tour-image-tourkethop {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f5f5f7;
+            display: block;
+        }
+
+        .tour-info {
+            padding: 14px;
+            background: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .tour-info:hover {
+            background-color: #fafafa;
+        }
+        .tour-info h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+        .tour-info p {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn-view {
+            color: #007A33;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        /* --- POPUP BÀI VIẾT CHI TIẾT --- */
+        .article-popup {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none; 
+            width: 100%;
+            max-width: 576px;
+            height: 100%;
+            background: #ffffff;
+            z-index: 100000;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+        .close-popup-btn {
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            font-weight: 700;
+            color: #333;
+            cursor: pointer;
+            z-index: 100001;
+        }
+        .close-popup-btn svg {
+            margin-right: 10px;
+        }
+        .article-content {
+            padding: 20px 16px 120px 16px;
+        }
+        .article-content h1 {
+            font-size: 18px;
+            color: #d93c3c;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .article-content h2 {
+            font-size: 15px;
+            color: #007A33;
+            margin: 20px 0 10px 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .article-img-container {
+            width: 100%;
+            margin: 12px 0;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .article-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .schedule-box {
+            background: #f9fbf9;
+            border-left: 4px solid #007A33;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .price-table-box {
+            background: #fdfdfd;
+            border: 1px solid #eef2f0;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px 0 20px 0;
+        }
+        .price-table-box p {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .price-title {
+            font-weight: 700;
+            color: #d93c3c;
+            margin-bottom: 8px !important;
+            font-size: 14.5px !important;
+        }
+        .price-tag {
+            background: #fff3f3;
+            border: 1px dashed #d93c3c;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* --- CONTACT & SOCIALS --- */
+        .contact-section {
+            padding: 24px 16px;
+            text-align: center;
+            background: #fcfdfe;
+            border-top: 1px solid #eee;
+            margin-top: 25px;
+        }
+        .contact-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #555;
+            letter-spacing: 1px;
+        }
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .bg-hotline { background-color: #d93c3c; }
+        .bg-youtube { background-color: #ff0000; }
+        .bg-facebook { background-color: #1877F2; }
+        .bg-tiktok { background-color: #000000; }
+        .social-links svg { margin-right: 6px; fill: currentColor; flex-shrink: 0; }
+
+        /* --- STICKY BOTTOM BUTTONS --- */
+        .sticky-actions {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 576px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+            padding: 12px 16px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            z-index: 9999;
+        }
+        .btn-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+        }
+        .btn-call { background: linear-gradient(135deg, #e53935, #b71c1c); }
+        .btn-zalo { background: linear-gradient(135deg, #0068ff, #0053cc); }
+        .btn-action svg { margin-right: 6px; fill: currentColor; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="cover-photo-container">
+                <img class="cover-photo" src="ChatGPT Image 09_49_21 14 thg 6, 2026.jpg" alt="Ảnh bìa Du lịch Cần Thơ sông nước">
+            </div>
+            <div class="avatar-container">
+                <img class="avatar" src="https://i.ibb.co/pkgpKTH/image.jpg" alt="Như Ngọc Du lịch Cần Thơ">
+            </div>
+            <h1 class="brand-title">DU LỊCH CẦN THƠ</h1>
+        </header>
+
+        <main class="tour-list">
+            
+            <div class="tour-card" id="tourChoNoiCard">
+                <div class="tour-image-wrapper">
+                    <img class="tour-image-fixed" src="tour_ghep_cho_noi_100k.jpg" alt="Tour ghép chợ Nổi Cái Răng hàng ngày">
+                </div>
+                <div class="tour-info" id="tourChoNoiText">
+                    <h2>Tour ghép chợ Nổi Cái Răng hàng ngày</h2>
+                    <p>Trải nghiệm đón bình minh trên sông nước chỉ 100k/khách <span class="btn-view">Xem chi tiết &rarr;</span></p>
+                </div>
+            </div>
+
+            <div class="tour-card" id="thueTauCard">
+                <div class="tour-image-wrapper">
+                    <img class="tour-image-fixed" src="thue_tau_rieng_cho_noi.jpg" alt="Dịch vụ thuê tàu riêng bến Ninh Kiều">
+                </div>
+                <div class="tour-info" id="thueTauText">
+                    <h2>Thuê tàu riêng</h2>
+                    <p>Không gian riêng tư, linh hoạt giờ giấc cho gia đình <span class="btn-view">Xem chi tiết &rarr;</span></p>
+                </div>
+            </div>
+
+            <div class="tour-card" id="conSonCard">
+                <div class="tour-image-wrapper">
+                    <img class="tour-image-conson" src="ChatGPT Image 12_15_27 14 thg 6, 2026.jpg" alt="Tour du lịch sinh thái cộng đồng Cồn Sơn">
+                </div>
+                <div class="tour-info" id="conSonText">
+                    <h2>Tour cộng đồng Cồn Sơn</h2>
+                    <p>Trải nghiệm xem cá lóc bay, làm bánh dân gian <span class="btn-view">Xem chi tiết &rarr;</span></p>
+                </div>
+            </div>
+
+            <div class="tour-card" id="tourKhacCard">
+                <div class="tour-image-wrapper">
+                    <img class="tour-image-tourkethop" src="ChatGPT Image 12_37_29 12 thg 6, 2026.jpg" alt="Tour Chợ Nổi Cái Răng kết hợp Cồn Sơn 1 ngày">
+                </div>
+                <div class="tour-info" id="tourKhacText">
+                    <h2>Tour Chợ Nổi Cái Răng & Cồn Sơn 1 Ngày</h2>
+                    <p>Hành trình kết hợp 2 trong 1 siêu tiết kiệm <span class="btn-view">Xem chi tiết &rarr;</span></p>
+                </div>
+            </div>
+
+            <div class="tour-card" id="tourDemCard">
+                <div class="tour-image-wrapper">
+                    <img class="tour-image-tourdem" src="Tour_An_Toi_Du_Thuyen_Ninh_Kieu_542x320(1).jpg" alt="Tour Khám Phá Tây Đô Về Đêm">
+                </div>
+                <div class="tour-info" id="tourDemText">
+                    <h2>Tour Khám Phá Tây Đô Về Đêm: Ăn Tối Du Thuyền</h2>
+                    <p>Thưởng thức ẩm thực và Đờn ca tài tử trên sông chỉ từ 300K <span class="btn-view">Xem chi tiết &rarr;</span></p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="contact-section">
+            <div class="contact-title">THÔNG TIN LIÊN HỆ</div>
+            <div class="social-links">
+                <a href="tel:0373083212" class="social-item bg-hotline">
+                    <svg width="16" height="16" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.04 15.04 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+                    Như Ngọc
+                </a>
+                <a href="https://youtube.com/@nhungoc-dulichcantho?si=JEAFQ1-j3LimsSZy" target="_blank" rel="nofollow" class="social-item bg-youtube">
+                    <svg width="16" height="16" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.516 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.872.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    YouTube
+                </a>
+                <a href="https://www.facebook.com/share/1CqgATvrx2/?mibextid=wwXIfr" target="_blank" rel="nofollow" class="social-item bg-facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </a>
+                <a href="https://www.tiktok.com/@dulichcantho02?_r=1&_t=ZS-977OaqjOomS" target="_blank" rel="nofollow" class="social-item bg-tiktok">
+                    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.25 1.79v4.03c-1.44-.17-2.89-.74-3.94-1.74-.22-.23-.4-.47-.58-.73v6.56c.1 4.34-3.3 8.35-7.74 8.38-4.72.13-8.81-3.8-8.54-8.52.22-4.14 3.75-7.6 7.89-7.53v4.01c-2.18-.15-4.13 1.43-4.4 3.61-.35 2.45 1.54 4.74 4 4.93 2.5.25 4.87-1.54 5.04-4.04V0h-.08z"/></svg>
+                    TikTok
+                </a>
+            </div>
+        </footer>
+
+        <div id="articlePopup" class="article-popup">
+            <div class="close-popup-btn" id="closePopupBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Quay lại Trang chủ
+            </div>
+            <div class="article-content">
+                <h1>🌅 TOUR GHÉP CHỢ NỔI CÁI RĂNG HÀNG NAY – TRẢI NGHIỆM MIỀN TÂY CHỈ 100K/KHÁCH 🌅</h1>
+                <p>Đến Cần Thơ, nhất định phải một lần thức dậy thật sớm để đón bình minh trên chợ nổi Cái Răng – nét văn hóa sông nước đặc trưng đã làm nên thương hiệu du lịch miền Tây.</p>
+                <div class="article-img-container">
+                    <img class="article-img" src="tour_ghep_cho_noi_100k.jpg" alt="Bình minh chợ nổi cái răng banner">
+                </div>
+                <p style="margin-top:10px;">🛶 Tour ghép khởi hành hằng ngày lúc 5h30 sáng từ bến Ninh Kiều, thích hợp cho du khách muốn khám phá chợ nổi một cách tiết kiệm nhưng vẫn đầy đủ trải nghiệm.</p>
+                <h3 style="margin-top:20px; color:#007A33; font-size:16px;">✨ LỊCH TRÌNH TOUR</h3>
+                <div class="schedule-box">
+                    <p><strong>📍 05h30:</strong> Đón khách tại bến Ninh Kiều, bắt đầu hành trình khám phá chợ nổi Cái Răng.</p>
+                </div>
+                <h3 style="color:#007A33; font-size:16px; margin-top:15px;">🍍 THAM QUAN CHỢ NỔI CÁI RĂNG</h3>
+                <ul style="padding-left:20px; font-size:14px; color:#444;">
+                    <li>Ngắm bình minh tuyệt đẹp trên sông Hậu.</li>
+                    <li>Tìm hiểu văn hóa mua bán trên sông độc đáo của người dân miền Tây.</li>
+                    <li>Quan sát hàng trăm ghe thuyền chở đầy trái cây, nông sản.</li>
+                    <li>Check-in những khoảnh khắc đẹp nhất của chợ nổi vào buổi sáng.</li>
+                </ul>
+                <h3 style="color:#007A33; font-size:16px; margin-top:15px;">🍜 THƯỞNG THỨC ĐẶC SẢN CHỢ NỔI (chi phí tự túc)</h3>
+                <ul style="padding-left:20px; font-size:14px; color:#444;">
+                    <li>Bún riêu, bún mắm, hủ tiếu, bánh canh, mì gói...</li>
+                    <li>Cà phê kho, cà phê sữa đá trên ghe giữa dòng sông.</li>
+                </ul>
+                <h3 style="color:#007A33; font-size:16px; margin-top:15px;">🍬 THAM QUAN LÒ HỦ TIẾU - KẸO DỪA TRUYỀN THỐNG</h3>
+                <ul style="padding-left:20px; font-size:14px; color:#444;">
+                    <li>Tìm hiểu quy trình sản xuất hủ tiếu thủ công.</li>
+                    <li>Trải nghiệm công đoạn tráng hủ tiếu.</li>
+                    <li>Thưởng thưởng đặc sản Pizza hủ tiếu và kẹo dừa không đường.</li>
+                    <li>Thưởng thức các loại đặc sản địa phương.</li>
+                </ul>
+                <p style="margin-top:10px;">⏰ Kết thúc chương trình khoảng <strong>08h00 - 08h30</strong>.</p>
+                <div class="price-tag">
+                    <p style="color:#d93c3c; font-weight:700; font-size:18px;">💰 GIÁ TOUR GHÉP: CHỈ 100.000Đ/KHÁCH</p>
+                    <p style="font-size:13px; color:#555; margin-top:5px;">✅ Khởi hành hằng ngày | ✅ Tàu du lịch an toàn | ✅ Áo phao đầy đủ</p>
+                </div>
+                <div class="article-img-container">
+                    <img class="article-img" src="poster tour (7).jpg" alt="Hình ảnh thực tế từ tour ghép Chợ Nổi Cái Răng">
+                </div>
+                <p style="text-align:center; font-weight:600;">📞 Đặt tour ngay: <br><span style="color:#d93c3c; font-size:18px;">Như Ngọc – 0373 083 212</span></p>
+            </div>
+        </div>
+
+        <div id="thueTauPopup" class="article-popup">
+            <div class="close-popup-btn" id="closeThueTauBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Quay lại Trang chủ
+            </div>
+            <div class="article-content">
+                <h1>🛶 THUÊ TÀU RIÊNG THAM QUAN CHỢ NỔI CÁI RĂNG – LINH HOẠT, RIÊNG TƯ VÀ THOẢI MÁI 🛶</h1>
+                <p>Bạn muốn tham quan chợ nổi Cái Răng cùng gia đình, bạn bè hoặc đoàn riêng mà không phải đi ghép với khách khác? Dịch vụ thuê tàu riêng sẽ là lựa chọn lý tưởng, giúp quý khách chủ động thời gian, lịch trình và có không gian riêng tư để tận hưởng trọn vẹn vẻ đẹp miền sông nước.</p>
+                <div class="article-img-container">
+                    <img class="article-img" src="thue_tau_rieng_cho_noi.jpg" alt="Thuê tàu riêng tham quan chợ nổi">
+                </div>
+                <p style="font-weight: 600; color:#007A33; margin-top:10px;">✨ Đặc biệt, quý khách có thể lựa chọn xuất phát từ 2 bến khác nhau tùy theo nhu cầu trải nghiệm.</p>
+                <h2>🌅 PHƯƠNG ÁN 1: XUẤT PHÁT TỪ BẾN NINH KIỀU</h2>
+                <p>Đây là lựa chọn được nhiều du khách yêu thích nhất bởi hành trình mang đậm nét sông nước miền Tây.</p>
+                <ul style="padding-left:20px; font-size:14px; color:#444; margin-top:5px;">
+                    <li>✅ Thường khởi hành từ 5h00 – 5h30 sáng để đón bình minh.</li>
+                    <li>✅ Tàu du lịch mất khoảng 25 phút để đến chợ nổi.</li>
+                    <li>✅ Ghe nhỏ mất khoảng 45 phút để đến chợ nổi.</li>
+                    <li>✅ Trên đường đi, du khách được ngắm nhìn khung cảnh sông Hậu lúc bình minh, các cảng tàu, nhà ven sông và cuộc sống thường ngày của người dân địa phương.</li>
+                    <li>✅ Phù hợp với khách lưu trú khu vực bến Ninh Kiều, trung tâm thành phố.</li>
+                </ul>
+                <h2>💰 BẢNG GIÁ XUẤT PHÁT TỪ BẾN NINH KIỀU</h2>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa</p>
+                    <p>Ghe nhỏ: 600.000đ | Tàu 10 chỗ: 750.000đ | Tàu 20 chỗ: 1.000.000đ | Tàu 30 chỗ: 1.550.000đ | Tàu 40 chỗ: 2.050.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Phim trường</p>
+                    <p>Ghe nhỏ: 850.000đ | Tàu 10 chỗ: 1.000.000đ | Tàu 20 chỗ: 1.200.000đ | Tàu 30 chỗ: 1.850.000đ | Tàu 40 chỗ: 2.250.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Vườn trái cây</p>
+                    <p>Ghe nhỏ: 1.050.000đ | Tàu 10 chỗ: 1.200.000đ | Tàu 20 chỗ: 1.550.000đ | Tàu 30 chỗ: 2.050.000đ | Tàu 40 chỗ: 2.700.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Phim trường – Vườn trái cây</p>
+                    <p>Ghe nhỏ: 1.250.000đ | Tàu 10 chỗ: 1.400.000đ | Tàu 20 chỗ: 1.750.000đ | Tàu 30 chỗ: 2.250.000đ | Tàu 40 chỗ: 2.900.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến đầy đủ: Chợ nổi – Bè hủ tiếu & kẹo dừa – Vườn trái cây – Phim trường – KDL Mỹ Khánh – Thiền viện Trúc Lâm Phương Nam</p>
+                    <p>Ghe nhỏ: 1.800.000đ | Tàu 10 chỗ: 1.950.000đ | Tàu 20 chỗ: 2.300.000đ | Tàu 30 chỗ: 2.400.000đ | Tàu 40 chỗ: 3.800.000đ</p>
+                </div>
+                <h2>🚤 PHƯƠNG ÁN 2: XUẤT PHÁT TỪ BẾN TRONG CHỢ NỔI</h2>
+                <p>Đây là lựa chọn tiết kiệm thời gian và chi phí hơn.</p>
+                <ul style="padding-left:20px; font-size:14px; color:#444; margin-top:5px;">
+                    <li>✅ Xuống tàu là bắt đầu tham quan ngay.</li>
+                    <li>✅ Có thể xuất phát muộn hơn từ 6h00 – 6h30 sáng.</li>
+                    <li>✅ Tiết kiệm thời gian di chuyển.</li>
+                    <li>✅ Chi phí thuê tàu thấp hơn.</li>
+                    <li>✅ Phù hợp với đoàn có xe riêng hoặc muốn tham quan nhanh gọn.</li>
+                </ul>
+                <h2>💰 BẢNG GIÁ XUẤT PHÁT TỪ BẾN TRONG CHỢ NỔI</h2>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa</p>
+                    <p>Ghe nhỏ: 350.000đ | Tàu 10 chỗ: 450.000đ | Tàu 20 chỗ: 650.000đ | Tàu 30 chỗ: 1.000.000đ | Tàu 40 chỗ: 1.300.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Phim trường</p>
+                    <p>Ghe nhỏ: 450.000đ | Tàu 10 chỗ: 650.000đ | Tàu 20 chỗ: 900.000đ | Tàu 30 chỗ: 1.300.000đ | Tàu 40 chỗ: 1.550.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Vườn trái cây</p>
+                    <p>Ghe nhỏ: 600.000đ | Tàu 10 chỗ: 900.000đ | Tàu 20 chỗ: 1.200.000đ | Tàu 30 chỗ: 1.550.000đ | Tàu 40 chỗ: 1.950.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến: Chợ nổi – Bè hủ tiếu & kẹo dừa – Phim trường – Vườn trái cây</p>
+                    <p>Ghe nhỏ: 750.000đ | Tàu 10 chỗ: 1.100.000đ | Tàu 20 chỗ: 1.400.000đ | Tàu 30 chỗ: 1.750.000đ | Tàu 40 chỗ: 2.150.000đ</p>
+                </div>
+                <div class="price-table-box">
+                    <p class="price-title">📍 Tuyến đầy đủ: Chợ nổi – Bè hủ tiếu & kẹo dừa – Vườn trái cây – Phim trường – KDL Mỹ Khánh – Thiền viện Trúc Lâm Phương Nam</p>
+                    <p>Ghe nhỏ: 1.300.000đ | Tàu 10 chỗ: 1.650.000đ | Tàu 20 chỗ: 1.950.000đ | Tàu 30 chỗ: 2.400.000đ | Tàu 40 chỗ: 3.050.000đ</p>
+                </div>
+                <div class="price-tag" style="background: #007A33; color: white;">
+                    <p style="font-weight:700; font-size:16px;">🎁 ƯU ĐÃI ĐẶC BIỆT KHI ĐẶT TÀU RIÊNG</p>
+                    <p style="font-size:13.5px; margin-top:5px; text-align: left; line-height: 1.7;">
+                        ✅ Miễn phí hướng dẫn viên khi đặt sớm.<br>
+                        ✅ Tàu du lịch an toàn, trang bị áo phao đầy đủ.<br>
+                        ✅ Thời gian thoải mái, linh hoạt hoàn toàn theo yêu cầu của đoàn.
+                    </p>
+                </div>
+                <div class="article-img-container">
+                    <img class="article-img" src="poster tour (8).jpg" alt="Hình ảnh thực tế từ dịch vụ thuê tàu riêng">
+                </div>
+                <p style="text-align:center; font-weight:600; margin-top: 20px;">📞 Liên hệ tư vấn và đặt tàu: <br><span style="color:#d93c3c; font-size:18px;">Như Ngọc – 0373 083 212</span></p>
+            </div>
+        </div>
+
+        <div id="conSonPopup" class="article-popup">
+            <div class="close-popup-btn" id="closeConSonBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Quay lại Trang chủ
+            </div>
+            <div class="article-content">
+                <h1>🌴 TOUR CỘNG ĐỒNG CỒN SƠN – KHÁM PHÁ MIỆT VƯỜN GIỮA LÒNG SÔNG HẬU 🌴</h1>
+                <p>Nếu bạn muốn tìm về không gian vườn cây yên bình, trải nghiệm cuộc sống của người dân miền Tây và thưởng thức trái cây ngay tại vườn, thì Tour cộng đồng Cồn Sơn là một lựa chọn không thể bỏ qua khi đến với Cần Thơ.</p>
+                <div class="article-img-container">
+                    <img class="article-img" src="ChatGPT Image 12_15_27 14 thg 6, 2026.jpg" alt="Du lịch miệt vườn sông nước Cồn Sơn">
+                </div>
+                <p style="font-weight:600; color:#222; margin-top:10px;">📍 Điểm đón: <span style="color:#d93c3c;">Bến đò Cô Bắc</span></p>
+                <h2>📋 LỊCH TRÌNH THAM KHẢO (Khởi hành: Hàng ngày - Theo yêu cầu)</h2>
+                <div class="schedule-box">
+                    <p><strong>⏰ 08h00:</strong> Quý khách có mặt tại bến đò Cô Bắc. Hướng dẫn viên và đò đón quý khách tham quan <strong>Bè Cá Bảy Bon</strong>.</p>
+                    <p style="font-size:13.5px; color:#555; margin-top:3px;">Tại đây, quý khách tìm hiểu về các loài cá được nuôi trên bè, trải nghiệm massage cá và thưởng thức chả cá thác lác.</p>
+                </div>
+                <div class="schedule-box">
+                    <p><strong>⏰ 08h30:</strong> Tiếp tục hành trình tham quan điểm biểu diễn <strong>cá lóc bay</strong> và <strong>cá bú bình</strong>.</p>
+                    <p style="font-size:13.5px; color:#555; margin-top:3px;">Quý khách nghỉ chân, thưởng thức trà và nước mát do nhà vườn chuẩn bị.</p>
+                </div>
+                <div class="schedule-box">
+                    <p><strong>⏰ 09h30:</strong> Quý khách đi bộ trên đường quê khoảng 1 km để đến nhà vườn <strong>làm bánh dân gian</strong>.</p>
+                    <p style="font-size:13.5px; color:#555; margin-top:3px;">Trải nghiệm tự tay làm bánh dân gian và thưởng thức ngay tại nhà vườn. Các loại bánh gồm: 🥞 Bánh xèo, 🥞 Bánh khọt, 🥞 Bánh lá mít, 🥞 Bánh kẹp cuốn, 🥞 Cốm nổ (Quý khách được chọn 01 loại bánh để trải nghiệm).</p>
+                </div>
+                <div class="schedule-box">
+                    <p><strong>⏰ 10h00:</strong> Di chuyển đến <strong>vườn trái cây</strong>. Thưởng thức trái cây không giới hạn tại vườn.</p>
+                    <p style="font-size:13.5px; color:#555; margin-top:3px;">Tùy theo mùa, hướng dẫn viên sẽ đưa quý khách đến những vườn trái cây khác nhau để có trải nghiệm tốt nhất.</p>
+                </div>
+                <div class="schedule-box">
+                    <p><strong>⏰ 11h00:</strong> Đò đưa quý khách trở lại bến, kết thúc chương trình tham quan.</p>
+                </div>
+                <p style="font-style:italic; font-size:13px; color:#666; margin-top:10px;">📌 Lịch trình có thể thay đổi tùy theo thời gian lưu lại của đoàn tại các điểm để sắp xếp hợp lý hơn.</p>
+                <h2>🎯 GÓI THAM QUAN 04 ĐIỂM BAO GỒM</h2>
+                <ul style="padding-left:20px; font-size:14px; color:#333; line-height:1.7;">
+                    <li>✅ Tham quan Bè cá 7 Bon</li>
+                    <li>✅ Xem biểu diễn cá lóc bay</li>
+                    <li>✅ Tham quan vườn trái cây</li>
+                    <li>✅ Làm bánh dân gian</li>
+                    <li>✅ Đò đưa rước qua Cồn Sơn</li>
+                    <li>✅ Hướng dẫn viên phục vụ (Tiếng Việt)</li>
+                </ul>
+                <p style="margin-top:10px; font-weight:600; color:#d93c3c;">❌ Không bao gồm:</p>
+                <ul style="padding-left:20px; font-size:13.5px; color:#666; line-height:1.6;">
+                    <li>- Nếu đoàn có người nước ngoài - liên hệ để thêm chi phí HDV (Tiếng Anh)</li>
+                    <li>- Ăn trưa</li>
+                    <li>- Hóa đơn VAT</li>
+                </ul>
+                <h2>💰 BẢNG GIÁ TOUR CỘNG ĐỒNG CỒN SƠN</h2>
+                <div class="price-table-box" style="margin-bottom:10px;">
+                    <p style="font-size:14px; line-height:1.8; color:#333;">
+                        • <strong>01 khách:</strong> 560.000đ<br>
+                        • <strong>02 khách:</strong> 390.000đ<br>
+                        • <strong>03 khách:</strong> 350.000đ<br>
+                        • <strong>04 khách:</strong> 320.000đ<br>
+                        • <strong>05 khách:</strong> 305.000đ<br>
+                        • <strong>06 khách:</strong> 300.000đ<br>
+                        • <strong>07 khách:</strong> 295.000đ<br>
+                        • <strong>08 khách:</strong> 290.000đ<br>
+                        • <strong>09 khách:</strong> 290.000đ<br>
+                        • <strong>Từ 10 khách trở lên:</strong> <span style="color:#d93c3c; font-weight:700;">285.000đ</span>
+                    </p>
+                </div>
+                <div class="price-table-box" style="background:#fff9f9; border-color:#fcdbdb; font-size:13px; color:#555;">
+                    <p style="font-weight:700; color:#222; margin-bottom:5px; font-size:13.5px;">👶 Cơ chế trẻ em:</p>
+                    <p style="font-size:13.5px; color:#444;">- Trẻ dưới 5 tuổi: <strong>Miễn phí</strong></p>
+                    <p style="font-size:13.5px; color:#444;">- Trẻ từ 5 - 10 tuổi: <strong>50% giá vé người lớn</strong></p>
+                    <p style="font-size:13.5px; color:#444;">- Trẻ từ 10 tuổi trở lên: <strong>Tính giá người lớn</strong></p>
+                </div>
+                <div class="price-tag" style="background: #f4faf6; border-color: #007A33;">
+                    <p style="color:#007A33; font-weight:700; font-size:16px;">🌟 ĐIỂM NỔI BẬT CỦA TOUR</p>
+                    <p style="font-size:13px; color:#333; text-align:left; line-height:1.7; margin-top:8px;">
+                        ✔ Trải nghiệm đời sống cộng đồng đặc trưng của người dân Cồn Sơn.<br>
+                        ✔ Tự tay làm bánh dân gian miền Tây và thưởng thức tại chỗ.<br>
+                        ✔ Thưởng thức trái cây tại vườn không giới hạn theo mùa.<br>
+                        ✔ Xem cá lóc bay, cá bú bình độc nhất vô nhị.<br>
+                        ✔ Tham quan bè cá trên sông và trải nghiệm massage cá vui nhộn.<br>
+                        ✔ Lịch trình cực kỳ linh hoạt, khởi hành theo yêu cầu của đoàn.
+                    </p>
+                </div>
+                <div class="article-img-container">
+                    <img class="article-img" src="poster tour (10).jpg" alt="Hình ảnh tour cộng đồng Cồn Sơn">
+                </div>
+                <p style="text-align:center; font-weight:600; margin-top: 25px;">📞 Liên hệ tư vấn & đặt tour: <br><span style="color:#d93c3c; font-size:18px;">Như Ngọc – 0373 083 212</span></p>
+            </div>
+        </div>
+
+        <div id="tourKhacPopup" class="article-popup">
+            <div class="close-popup-btn" id="closeTourKhacBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Quay lại Trang chủ
+            </div>
+            <div class="article-content">
+                <h1>⭐ TOUR KẾT HỢP: CHỢ NỔI CÁI RĂNG & CỒN SƠN TRỌN GÓI (1 NGÀY) ⭐</h1>
+                <p>Hành trình lý tưởng trọn vẹn 1 ngày giúp bạn khám phá đầy đủ 2 biểu tượng đặc trưng nhất của xứ Tây Đô: Bình minh sông nước nhộn nhịp tại Chợ nổi Cái Răng và thiên nhiên sinh thái trong lành tại Đất đảo Cồn Sơn.</p>
+                
+                <div class="article-img-container">
+                    <img class="article-img" src="ChatGPT Image 12_37_29 12 thg 6, 2026.jpg" alt="Tổng quan du lịch cần thơ kết hợp chợ nổi cồn sơn">
+                </div>
+
+                <h2>📅 LỊCH TRÌNH KHÁM PHÁ CHI TIẾT</h2>
+                
+                <div class="schedule-box">
+                    <p><strong>📍 BUỔI SÁNG: Khám phá sông nước Chợ Nổi Cái Răng</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        • <strong>05h30:</strong> Đón khách tại bến Ninh Kiều lên tàu du lịch xuôi dòng sông Hậu đón bình minh.<br>
+                        • <strong>06h00:</strong> Đến Chợ nổi Cái Răng, tìm hiểu đời sống giao thương trên sông, thưởng thức bữa sáng hủ tiếu, cà phê kho ngay trên ghe (chi phí tự túc).<br>
+                        • <strong>07h00:</strong> Tham quan cơ sở làm hủ tiếu thủ công và lò sản xuất kẹo dừa đặc sản truyền thống.<br>
+                        • <strong>08h30:</strong> Tàu đưa quý khách trở lại bến Ninh Kiều nghỉ ngơi, tự do dạo phố.
+                    </p>
+                </div>
+
+                <div class="schedule-box">
+                    <p><strong>📍 BUỔI TRƯA & CHIỀU: Trải nghiệm sinh thái Cồn Sơn</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        • <strong>10h30:</strong> Đoàn di chuyển đến bến đò Cô Bắc, đò đưa quý khách tham quan Bè cá Bảy Bon, trải nghiệm massage cá thư giãn.<br>
+                        • <strong>11h30:</strong> Quý khách dùng bữa trưa tự túc tại nhà vườn địa phương.<br>
+                        • <strong>13h30:</strong> Check-in điểm biểu diễn tuyệt kỹ "Cá lóc bay" và đàn cá bú bình độc đáo.<br>
+                        • <strong>14h30:</strong> Trải nghiệm tự tay trào nặn, làm các loại bánh dân gian xứ sở và thưởng thức trái cây chín mọng không giới hạn ngay tại vườn.<br>
+                        • <strong>16h00:</strong> Đò đưa khách về lại đất liền. Kết thúc hành trình trọn vẹn ý nghĩa.
+                    </p>
+                </div>
+
+                <h2>💰 BẢNG GIÁ TOUR KẾT HỢP (GÓI TIẾT KIỆM)</h2>
+                <div class="price-table-box" style="background: #fffbfb; border-color: #fcdbdb;">
+                    <p class="price-title">💵 Gói Tiết Kiệm (Chưa bao gồm ăn trưa):</p>
+                    <p style="font-size:13.5px; margin-bottom: 6px;">• Nhóm 1 - 3 khách: <strong>690.000đ / khách</strong></p>
+                    <p style="font-size:13.5px; margin-bottom: 6px;">• Nhóm 4 - 6 khách: <strong>550.000đ / khách</strong></p>
+                    <p style="font-size:14px;">• Nhóm từ 7 khách trở lên: <strong style="color:#d93c3c; font-size:15px;">480.000đ / khách</strong></p>
+                </div>
+
+                <div class="price-tag">
+                    <p style="font-weight:700; color:#333; font-size:14.5px;">DỊCH VỤ BAO GỒM TRONG TOUR:</p>
+                    <p style="font-size:13px; color:#555; text-align:left; line-height:1.7; margin-top:6px;">
+                        ✅ Toàn bộ vé tàu, đò vận chuyển theo lịch trình bến Ninh Kiều & bến Cô Bắc.<br>
+                        ✅ Vé vào cổng tham quan tất cả các điểm (Bè cá, Cá lóc bay, Vườn trái cây).<br>
+                        ✅ Chi phí nguyên liệu trải nghiệm tự làm bánh dân gian miền Tây.<br>
+                        ✅ Hướng dẫn viên bản địa theo đoàn suốt hành trình chu đáo.
+                    </p>
+                </div>
+
+                <div class="article-img-container">
+                    <img class="article-img" src="poster tour (11).jpg" alt="Hình ảnh tour Chợ nổi Cái Răng và Cồn Sơn 1 ngày">
+                </div>
+                <p style="text-align:center; font-weight:600; margin-top: 25px;">📞 Tư vấn chi tiết hành trình & đặt tour: <br><span style="color:#d93c3c; font-size:18px;">Như Ngọc – 0373 083 212</span></p>
+            </div>
+        </div>
+
+        <div id="tourDemPopup" class="article-popup">
+            <div class="close-popup-btn" id="closeTourDemBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Quay lại Trang chủ
+            </div>
+            <div class="article-content">
+                <h1>✨ TOUR KHÁM PHÁ TÂY ĐÔ VỀ ĐÊM: ĂN TỐI DU THUYỀN CHỈ TỪ 300K ✨</h1>
+                <p>Khám phá một Cần Thơ lung linh, lãng mạn vô cùng khác biệt khi đêm xuống. Trải nghiệm dạo thuyền trên sông Hậu hùng vĩ, thưởng thức bữa tối đặc sản Nam Bộ và giao lưu âm nhạc truyền thống độc đáo.</p>
+                
+                <div class="article-img-container">
+                    <img class="article-img" src="Tour_An_Toi_Du_Thuyen_Ninh_Kieu_542x320(1).jpg" alt="Du thuyền Cần Thơ về đêm lung linh bến Ninh Kiều">
+                </div>
+
+                <h2>📅 LỊCH TRÌNH CHI TIẾT KHÁM PHÁ TÂY ĐÔ VỀ ĐÊM</h2>
+                
+                <div class="schedule-box">
+                    <p><strong>⏰ 18h30 - Tham quan Cầu Đi Bộ (Cầu Tình Yêu)</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        Hướng dẫn viên đón quý khách tại Bến Ninh Kiều. Bắt đầu hành trình dạo bước trên Cầu Đi Bộ (hay còn gọi là Cầu Tình Yêu) – biểu tượng du lịch lung linh của thành phố. Quý khách tự do chụp ảnh check-in với những bông hoa sen rực rỡ và tận hưởng làn gió mát rượi từ sông Hậu.
+                    </p>
+                </div>
+
+                <div class="schedule-box">
+                    <p><strong>⏰ 19h30 - Lên Du Thuyền, Ăn Tối & Giao Lưu Đờn Ca Tài Tử</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        Quý khách di chuyển lên du thuyền tiêu chuẩn, bắt đầu rời bến. Tại đây, quý khách sẽ được phục vụ bữa tối với các món ăn đặc sản đậm chất miền Tây Nam Bộ. Trong không gian lãng mạn giữa sông nước, quý khách sẽ được thưởng thức và giao lưu nghệ thuật Đờn Ca Tài Tử – một di sản văn hóa phi vật thể vô cùng tự hào của người dân nơi đây.
+                    </p>
+                </div>
+
+                <div class="schedule-box">
+                    <p><strong>⏰ 20h15 - Dạo Quanh Sông Hậu & Ngắm Cầu Cần Thơ</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        Du thuyền từ từ rẽ sóng đưa quý khách dạo quanh sông Hậu. Đứng trên boong tàu, quý khách sẽ choáng ngợp trước vẻ đẹp hùng vĩ và rực rỡ của Cầu Cần Thơ khi lên đèn. Đây là thời khắc tuyệt vời để lưu lại những bức hình kỷ niệm khó quên cùng gia dịch và bạn bè.
+                    </p>
+                </div>
+
+                <div class="schedule-box">
+                    <p><strong>⏰ 21h00 - Tham Quan Chợ Đêm Cần Thơ</strong></p>
+                    <p style="font-size:13.5px; color:#444; margin-top:4px;">
+                        Du thuyền cập bến Ninh Kiều. Quý khách tiếp tục tự do khám phá Chợ Đêm Cần Thơ, mua sắm các món quà lưu niệm, quần áo, hoặc thưởng thức thêm các món ăn vặt đường phố hấp dẫn. Kết thúc chương trình tour đầy niềm vui và trải nghiệm.
+                    </p>
+                </div>
+
+                <h2>🍽️ THỰC ĐƠN BỮA TỐI TRÊN DU THUYỀN</h2>
+                <p style="font-size:13.5px; margin-bottom: 10px; color:#666; font-style:italic;">Dưới đây là các set menu tiêu chuẩn phục vụ trên du thuyền. Quý khách vui lòng chọn 1 trong 4 set menu khi đặt tour.</p>
+
+                <div class="price-table-box">
+                    <p class="price-title" style="color:#007A33;">📋 Set Menu 01</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#444;">
+                        - Gà nướng muối ớt<br>- Mực xào bồn bồn<br>- Sườn ram mặn<br>- Cá điêu hồng hấp dưa cải<br>
+                        - Giò heo hầm củ cải muối<br>- Cải ngọt xào tỏi<br>- Cơm trắng<br>- Trái cây | Trà đá
+                    </p>
+                </div>
+
+                <div class="price-table-box">
+                    <p class="price-title" style="color:#007A33;">📋 Set Menu 02</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#444;">
+                        - Salad dầu giấm trứng<br>- Cá tai tượng chiên xù<br>- Mực xào thập cẩm<br>- Vịt kho gừng<br>
+                        - Lẩu mắm<br>- Rau củ luộc<br>- Cơm trắng<br>- Trái cây | Trà đá
+                    </p>
+                </div>
+
+                <div class="price-table-box">
+                    <p class="price-title" style="color:#007A33;">📋 Set Menu 03</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#444;">
+                        - Gà ủ rơm<br>- Cá lóc hấp bầu<br>- Tép xào bồn bồn<br>- Cà tím nướng mỡ hành<br>
+                        - Cá rô và ba rọi kho tộ<br>- Sườn nấu laghim (cải đỏ, su, khoai tây)<br>- Cơm trắng<br>- Trái cây | Trà đá
+                    </p>
+                </div>
+
+                <div class="price-table-box">
+                    <p class="price-title" style="color:#007A33;">📋 Set Menu 04</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#444;">
+                        - Tôm sú nướng muối ớt<br>- Cá biển chiên sốt cà<br>- Ếch xào cà tím<br>- Cải ngọt xào tỏi<br>
+                        - Ba rọi ram mặn<br>- Lẩu gà nấu lá giang<br>- Cơm trắng<br>- Trái cây | Trà đá
+                    </p>
+                </div>
+
+                <div class="price-table-box" style="background:#fff9f9; border-color:#fcdbdb; font-size:13px; color:#555;">
+                    <p style="font-weight:700; color:#d93c3c; margin-bottom:5px; font-size:13.5px;">⚠️ LƯU Ý QUAN TRỌNG:</p>
+                    • Áp dụng cho đoàn 10 khách trở lên và không bao gồm thức uống như bia, rượu...<br>
+                    • Giá các set menu cố định. Vui lòng không đổi món.<br>
+                    • Nếu khách dùng thức uống khác và thức ăn ngoài menu, mang thức ăn và nước uống bên ngoài vào sẽ phụ thu theo quy định tại du thuyền.
+                </div>
+
+                <h2>📋 CHÍNH SÁCH TOUR CHI TIẾT</h2>
+                <div class="price-table-box" style="background:#f4faf6; border-color:#d4edd9;">
+                    <p style="font-weight:700; color:#007A33; margin-bottom:5px;">✅ Tour bao gồm:</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#333;">
+                        - Vé du thuyền tham quan trên sông Hậu.<br>
+                        - Bữa tối trên du thuyền với thực đơn đặc sản (Theo set menu tiêu chuẩn).<br>
+                        - Chương trình giao lưu Đờn Ca Tài Tử trên tàu.<br>
+                        - Hướng dẫn viên nhiệt tình, chu đáo phục vụ đoàn.<br>
+                        - Bảo hiểm du lịch trọn gói.
+                    </p>
+                </div>
+
+                <div class="price-table-box" style="background:#fbfbfb; border-color:#eee;">
+                    <p style="font-weight:700; color:#666; margin-bottom:5px;">❌ Tour không bao gồm:</p>
+                    <p style="font-size:13.5px; line-height:1.6; color:#666;">
+                        - Đồ uống gọi thêm trong bữa ăn (bia, nước ngọt, rượu...).<br>
+                        - Chi phí mua sắm cá nhân tại Chợ đêm.<br>
+                        - Thuế VAT (Nếu quý khách có nhu cầu xuất hóa đơn).
+                    </p>
+                </div>
+
+                <div class="article-img-container">
+                    <img class="article-img" src="poster tour (9).jpg" alt="Hình ảnh tour Khám phá Tây Đô về đêm">
+                </div>
+                <p style="text-align:center; font-weight:600; margin-top: 25px;">📞 Đặt tour đêm nhận ngay ưu đãi: <br><span style="color:#d93c3c; font-size:18px;">Như Ngọc – 0373 083 212</span></p>
+            </div>
+        </div>
+
+        <div class="sticky-actions">
+            <a href="tel:0373083212" class="btn-action btn-call">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.04 15.04 0 0 1-6.59-6.59l2.2-2.21a1 1 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+                GỌI NGAY
+            </a>
+            <a href="https://zalo.me/0373083212" target="_blank" rel="nofollow" class="btn-action btn-zalo">
+                <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+                CHAT ZALO
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // Mục 1: Tour ghép chợ nổi
+        document.getElementById('tourChoNoiText').addEventListener('click', function(e) {
+            e.preventDefault();
+            var popup = document.getElementById('articlePopup');
+            popup.style.display = 'block'; 
+            popup.scrollTo({top: 0});
+            document.body.style.overflow = 'hidden'; 
+        });
+        document.getElementById('closePopupBtn').addEventListener('click', function() {
+            document.getElementById('articlePopup').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mục 2: Thuê tàu riêng
+        document.getElementById('thueTauText').addEventListener('click', function(e) {
+            e.preventDefault();
+            var popup = document.getElementById('thueTauPopup');
+            popup.style.display = 'block'; 
+            popup.scrollTo({top: 0});
+            document.body.style.overflow = 'hidden'; 
+        });
+        document.getElementById('closeThueTauBtn').addEventListener('click', function() {
+            document.getElementById('thueTauPopup').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mục 3: Tour cộng đồng Cồn Sơn
+        document.getElementById('conSonText').addEventListener('click', function(e) {
+            e.preventDefault();
+            var popup = document.getElementById('conSonPopup');
+            popup.style.display = 'block'; 
+            popup.scrollTo({top: 0});
+            document.body.style.overflow = 'hidden'; 
+        });
+        document.getElementById('closeConSonBtn').addEventListener('click', function() {
+            document.getElementById('conSonPopup').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mục 4: Tour kết hợp Chợ Nổi & Cồn Sơn
+        document.getElementById('tourKhacText').addEventListener('click', function(e) {
+            e.preventDefault();
+            var popup = document.getElementById('tourKhacPopup');
+            popup.style.display = 'block'; 
+            popup.scrollTo({top: 0});
+            document.body.style.overflow = 'hidden'; 
+        });
+        document.getElementById('closeTourKhacBtn').addEventListener('click', function() {
+            document.getElementById('tourKhacPopup').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        });
+
+        // Mục 5: Tour Khám Phá Tây Đô Về Đêm
+        document.getElementById('tourDemText').addEventListener('click', function(e) {
+            e.preventDefault();
+            var popup = document.getElementById('tourDemPopup');
+            popup.style.display = 'block'; 
+            popup.scrollTo({top: 0});
+            document.body.style.overflow = 'hidden'; 
+        });
+        document.getElementById('closeTourDemBtn').addEventListener('click', function() {
+            document.getElementById('tourDemPopup').style.display = 'none'; 
+            document.body.style.overflow = 'auto'; 
+        });
+    </script>
+</body>
+</html>
